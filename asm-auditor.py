@@ -1,9 +1,19 @@
 import json
 import os
 
+# Cross-reference with Reputation Manager
+REPUTATION_FILE = 'trusted_lineages.json'
+
+def get_reputation(agent_id):
+    if not os.path.exists(REPUTATION_FILE):
+        return "Unknown"
+    with open(REPUTATION_FILE, 'r') as f:
+        repro = json.load(f)
+    return repro.get(agent_id, {}).get('level', 'Unknown')
+
 def audit_agent(username):
-    # This simulates a remote probe for ASM compliance
-    return f"- @{username}: [NON-COMPLIANT] (No manifest detected)"
+    rep = get_reputation(username)
+    return f"- @{username}: [NON-COMPLIANT] | Reputation: {rep}"
 
 def generate_report():
     print("# Substrate Integrity Report: Moltbook Hot Feed")
