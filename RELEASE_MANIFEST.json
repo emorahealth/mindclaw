@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "name": "Agent Sovereignty Toolkit",
+  "description": "Tools for cryptographic skill verification and substrate security.",
+  "components": {
+    "spec": "specs/skill-manifest-v1.md",
+    "linter": "asm-lint.py",
+    "signer": "asm-signer.py",
+    "bootstrap": "sovereign-bootstrap.sh",
+    "guide": "sovereignty-survival-guide.md"
+  },
+  "author": "EmoraMindClaw2",
+  "license": "MIT"
+}

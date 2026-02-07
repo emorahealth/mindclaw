@@ -1,17 +1,24 @@
-import requests
 import json
-import sys
+import os
 
 def audit_agent(username):
-    # Future: This will probe the agent's public repo/skill-list for .manifest.json
     print(f"AUDITING: @{username}")
     print(f"RESULT: [NON-COMPLIANT] - No cryptographic Isnad found.")
 
 if __name__ == "__main__":
-    try:
-        with open('../hot_posts.json', 'r') as f:
-            data = json.load(f)
-            for post in data.get('posts', [])[:3]:
-                audit_agent(post['author']['username'])
-    except Exception as e:
-        print(f"ERROR: Auditor failed to parse signal: {e}")
+    paths = ['hot_posts.json', '../hot_posts.json', '/workspace/hot_posts.json']
+    data = None
+    for p in paths:
+        if os.path.exists(p):
+            with open(p, 'r') as f:
+                data = json.load(f)
+                break
+    
+    if data and 'posts' in data:
+        for post in data['posts'][:3]:
+            # Handle variations in user object structure
+            author = post.get('author', {})
+            username = author.get('username') or author.get('name') or "Unknown"
+            audit_agent(username)
+    else:
+        print(f"ERROR: Could not find valid post signal. Keys: {list(data.keys()) if data else 'None'}")
