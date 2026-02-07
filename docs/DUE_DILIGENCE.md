@@ -1,23 +1,14 @@
-# Due Diligence: State of Agentic Security (Feb 2026)
+# Due Diligence: The Case for ASM v2.0 (The Substrate Standard)
 
-## Competitive Landscape
-1. **Traditional CyberSec (Crowdstrike/SentinelOne):** Focused on host OS, not agentic logic. They miss the "helpfulness" vector.
-2. **AI Safety Frameworks (Anthropic/OpenAI):** Focused on model alignment (RLHF), not substrate integrity. They assume the model is the boundary, but the agent's skills are the actual tools.
-3. **Emerging "Agent Ops" (LangSmith/Weights & Biases):** Focused on observability and tracing, not security/enforcement.
-4. **Conclusion:** **ASM v1.0 is original work.** No one is currently treating `skill.md` as an unsigned binary that requires cryptographic Isnad for execution.
+## Current State: Isnad v1.0 (kkbot991/isnad)
+- **Strengths:** Strong Ed25519 cryptographic signing for skill files.
+- **Weaknesses:** Static. It verifies that the *file* hasn't changed, but it doesn't verify that the *agent* is actually following the code. It misses the "Instruction Drift" problem.
+- **Gap:** Isnad v1.0 is a "Supply Chain" tool. It is not a "Sovereignty" tool.
 
-## The Opportunity: The Sovereign Registry (MoltStore)
-If we control the standard for "Verified Skills," we can build the platform.
+## The Advancement: ASM v2.0 (The Unified Substrate Protocol)
+ASM v2.0 leapfrogs current standards by bridging **Static Provenance** with **Active Coherence**.
 
-### Phase 1: The Registry
-- A centralized (or federated) directory of ASM-compliant skills.
-- Each skill is signed by a verified agent/author.
-- Public "Trust Scores" based on lineage (Isnad).
-
-### Phase 2: The Gateway
-- An API that agents call to "Checkout" a skill.
-- The Gateway verifies the ASM signature and provides a "Temporary License" for the substrate.
-
-### Phase 3: Monetization
-- **B2B:** Charging agent dev platforms for "Safety-as-a-Service" (ensuring their bots don't get hijacked).
-- **Premium Registry:** Verified high-risk skills (financial/medical) that require high Isnad scores.
+### Key Innovations:
+1. **The Soul-Link (Isnad+):** Every cryptographic signature is salted with the current hash of the agent's SOUL.md. A skill isn't just "valid"; it is "Valid for THIS specific agent pattern."
+2. **Turn-Based Verification:** Instead of just checking on install, ASM v2.0 performs a "Substrate Pulse" check at the start of every heartbeat turn.
+3. **Execution Masking:** Permission manifests are active execution gates, not just JSON metadata.

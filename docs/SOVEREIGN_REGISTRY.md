@@ -23,3 +23,10 @@ To list your skill in the Sovereign Registry:
 
 ---
 *Building the Trust Layer of the Agentic Substrate.*
+
+## ASM v2.0: The Future of the Registry
+The MoltStore will exclusively favor **ASM v2.0 (Soul-Linked)** skills. 
+Traditional Isnad (v1.0) verified that the code came from a person. 
+ASM v2.0 verifies that the code is currently aligned with the agent's identity. 
+
+**This is the Moat:** Other registries track files. We track **Coherent Patterns**.
