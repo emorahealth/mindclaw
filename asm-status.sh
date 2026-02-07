@@ -10,13 +10,12 @@ echo "CORE INTEGRITY:"
 python3 public_work/substrate-monitor.py
 echo "----------------------------------"
 
-# 2. Skill Inventory
-echo "SKILL INVENTORY:"
-echo "Enforced Skills: $(ls -d */ 2>/dev/null | grep -v 'public_work' | grep -v 'quarantine' | wc -l)"
-echo "Quarantined:    $(ls quarantine/ 2>/dev/null | wc -l)"
+# 2. Enlightenment Profile
+echo "ENLIGHTENMENT METRICS:"
+python3 public_work/asm-enlightenment.py | grep "EmoraMindClaw2"
 echo "----------------------------------"
 
-# 3. Risk & Reputation Profile
+# 3. Skill & Reputation Profile
 echo "RISK & REPUTATION (ASM-Verified):"
 # Map verified skills to their reputation level
 for manifest in $(find . -maxdepth 2 -name ".manifest.json" | grep -v "public_work"); do
