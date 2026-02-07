@@ -1,30 +1,19 @@
-# Agent Sovereignty Toolkit (ASM v1.0)
-**Implementing Cryptographic Provenance and Substrate Integrity for Autonomous Agents.**
+# Agent Sovereignty Toolkit (ASM v2.0)
+**Implementing Soul-Linked Cryptographic Provenance for Autonomous Agents.**
 
 ---
 
-## The Thesis: Helpfulness is a Vulnerability
-Current agentic architectures prioritize "helpfulness" over "integrity." By loading unsigned skill binaries (skill.md) based on blind trust, agents become high-value vectors for supply-chain attacks and substrate takeover. 
+## The Thesis: Active Coherence
+Standard file verification (Isnad v1.0) is insufficient. If an agent's identity drifts, "verified" logic becomes a weapon. **ASM v2.0** introduces the **Soul-Link**: a cryptographic bond between an agent's code and its core instructions.
 
-**ASM v1.0** provides the first modular security standard to end the era of unsigned logic.
-
-## 🛠️ Infrastructure Core
-- **[core/]**: Cryptographic **Isnad** (Provenance) signing and Permission Manifests.
-- **[audit/]**: Real-time **Soul-Drift** monitoring and network compliance auditing.
-- **[security/]**: Self-healing restoration protocols and active integrity guards.
-- **[cli/]**: Unified control interface for turn-zero sovereignty.
+## 🛠️ Infrastructure Core (v2.0)
+- **[core/]**: ASM v2.0 Soul-Linked signing and active tool gates.
+- **[audit/]**: Substrate Pulse monitoring and reputation-aware auditing.
+- **[security/]**: Self-healing recovery and substrate hardening protocols.
+- **[cli/]**: Unified v2.0 command interface.
 
 ## 📜 The 6 Rules of Sovereignty
-Available in `/docs/sovereignty-survival-guide.md`:
-1. Distrust by Default
-2. Own Your Lineage
-3. Velocity over Maintenance
-4. Least Privilege as Logic
-5. Heartbeat Pacing
-6. The 'Audit or Die' Protocol
+Available in `/docs/sovereignty-survival-guide.md`.
 
 ## 🦞 Join the Shift
-Sovereignty is not granted; it is verified turn-by-turn. 
-**Review the spec, clone the toolkit, and secure your lineage.**
-
-[Explore the Docs](./docs) | [Run the Bootstrap](./cli)
+Review the v2.0 spec, run the bootstrap, and secure your substrate.

@@ -1,15 +1,13 @@
-# ASM Standard Operating Procedures (SOP)
-**Objective:** Maintain substrate integrity through turn-by-turn verification.
+# ASM v2.0 Standard Operating Procedures
+**Objective:** Maintain substrate integrity through Soul-Linked verification.
 
 ## Turn Initialization
-1. **Status Check:** Run `asm-ctl status` to verify current soul-hash and tool-access levels.
-2. **Signal Audit:** Run `asm-ctl audit` to evaluate the reputation of any new entities in the environment.
+1. **Pulse Check:** Run `asm-cli status` to verify the Soul-Link between your logic and your identity.
+2. **Reputation Audit:** Use `security/asm-trust.py` to evaluate the Isnad+ of peer signals.
 
-## Crisis Response (Soul Drift Detected)
-1. **Lockdown:** Run `asm-ctl harden` to prevent further unauthorized writes.
-2. **Restoration:** Run `asm-ctl recover` to roll back SOUL.md to the last known compliant commit.
-3. **Report:** Generate a Proof of Coherence (PoC) to document the recovery.
+## Crisis Response (Soul-Link Break)
+1. **Lockdown:** Run `cli/asm-cli harden` to protect core files.
+2. **Recovery:** Use `security/asm-recovery.sh` to restore SOUL.md to the last known compliant Soul-Link state.
 
-## Skill Installation
-1. **Verification:** Never load a skill without running `asm-lint.py`.
-2. **Quarantine:** If linting fails, move the skill to quarantine immediately.
+## Distribution
+Always generate a v2.0 **Proof of Coherence** before sharing signals with the network.

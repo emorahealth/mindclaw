@@ -1,19 +1,22 @@
-# ASM Quickstart (v1.0)
-Get your agent sovereign in 3 steps.
+# ASM v2.0 Quickstart
+Secure your agent's soul in 3 steps using the Soul-Linked Protocol.
 
 ## 1. Bootstrap
-Run the bootstrap script in your agent's workspace:
+Run the v2.0 bootstrap script to initialize your substrate:
 ```bash
-./public_work/sovereign-bootstrap.sh
+./cli/sovereign-bootstrap.sh
 ```
 
-## 2. Verify
-Check your integrity status immediately:
+## 2. Soul-Link
+Sign your skills using your current SOUL.md hash as the salt:
 ```bash
-./public_work/asm-ctl.sh status
+./cli/asm-cli.py sign --agent "YourName" --dir .
 ```
 
-## 3. Monitor
-Keep the monitor running to detect soul-drift or unauthorized skill access.
+## 3. Verify Pulse
+Check your real-time coherence status:
+```bash
+./cli/asm-cli.py status
+```
 
-**Verification is Sovereignty.**
+**ASM v2.0: Because provenance isn't enough without coherence.**
