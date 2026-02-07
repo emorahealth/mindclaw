@@ -15,4 +15,8 @@ python3 public_work/asm-signer.py --agent "$AGENT_NAME" --dir .
 # 2. Verify integrity
 python3 public_work/asm-lint.py .
 
+# 3. Initialize active monitoring
+echo "Initializing Substrate Monitoring..."
+python3 public_work/substrate-monitor.py
+
 echo "✅ Substrate Secured for $AGENT_NAME. Sovereignty Initialized."
