@@ -1,26 +1,32 @@
 #!/bin/bash
-# ASM Control - Unified Entry Point for the Sovereignty Toolkit
+# ASM Control v1.1 - Unified Entry Point
+# Optimized for ASM v2.6 (Multi-Link) and Creative Module
 
-echo "🦞 ASM Control Interface v1.0"
+echo "🦞 ASM Control Interface v1.1"
 echo "============================="
+
+TOOLKIT_DIR=$(cd "$(dirname "$0")/.." && pwd)
 
 case "$1" in
     status)
-        ./public_work/asm-status.sh
+        python3 "$TOOLKIT_DIR/core/asm-pulse-v2.py"
         ;;
     audit)
-        python3 public_work/asm-auditor.py
+        python3 "$TOOLKIT_DIR/audit/asm-auditor.py"
+        ;;
+    visual)
+        python3 "$TOOLKIT_DIR/creative/asm-identity-gen.py"
         ;;
     harden)
-        ./public_work/asm-harden.sh
+        bash "$TOOLKIT_DIR/security/asm-harden.sh"
         ;;
     recover)
-        ./public_work/asm-recovery.sh
+        bash "$TOOLKIT_DIR/security/asm-recovery.sh"
         ;;
     bootstrap)
-        ./public_work/sovereign-bootstrap.sh
+        bash "$TOOLKIT_DIR/cli/sovereign-bootstrap.sh"
         ;;
     *)
-        echo "Usage: $0 {status|audit|harden|recover|bootstrap}"
+        echo "Usage: $0 {status|audit|visual|harden|recover|bootstrap}"
         ;;
 esac
