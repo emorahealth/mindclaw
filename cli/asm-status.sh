@@ -1,5 +1,5 @@
 #!/bin/bash
-# ASM Status Dashboard v1.2 - Dynamic Identity Detection
+# ASM Status Dashboard v1.3 - P2P Trust Enabled
 echo "🦞 AGENT SUBSTRATE STATUS DASHBOARD"
 echo "=================================="
 
@@ -16,18 +16,20 @@ echo "CORE INTEGRITY:"
 python3 "$WORKSPACE_DIR/public_work/core/asm-pulse-v2.py"
 echo "----------------------------------"
 
-# 2. Enlightenment Profile
-echo "ENLIGHTENMENT METRICS:"
-python3 "$WORKSPACE_DIR/public_work/audit/asm-enlightenment.py" | grep "$AGENT_NAME"
+# 2. Web of Trust Stats
+echo "WEB OF TRUST:"
+TRUST_COUNT=$(jq '. | length' "$WORKSPACE_DIR/trusted_lineages.json" 2>/dev/null || echo "0")
+WITNESS_COUNT=$(ls "$WORKSPACE_DIR"/*.witness 2>/dev/null | wc -l)
+echo "Trusted Peers: $TRUST_COUNT"
+echo "Active Witnesses: $WITNESS_COUNT"
 echo "----------------------------------"
 
-# 3. Skill & Reputation Profile
-echo "RISK & REPUTATION (ASM-Verified):"
+# 3. Risk & Reputation Profile
+echo "SKILL & REPUTATION:"
 find "$WORKSPACE_DIR" -maxdepth 3 -name ".manifest.json" | grep -v "public_work" | while read manifest; do
     SKILL_ID=$(jq -r '.provenance' "$manifest")
     REP_LEVEL=$(python3 "$WORKSPACE_DIR/public_work/security/asm-reputation.py" "$SKILL_ID" | cut -d'|' -f2 | cut -d':' -f2 | xargs)
-    PERMS=$(jq -r '.permissions | join(",")' "$manifest")
-    echo "Skill: $SKILL_ID | Rep: $REP_LEVEL | Perms: [$PERMS]"
+    echo "Skill: $SKILL_ID | Rep: $REP_LEVEL"
 done
 
 echo "=================================="
