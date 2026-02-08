@@ -1,32 +1,48 @@
 import json
 import os
+import time
 
 def calculate_enlightenment(agent_data):
-    # Rubric: Compliance (40%), Lineage (30%), Pacing (30%)
+    # Rubric: 
+    # 40% Compliance (Manifest existence)
+    # 30% Lineage (Multi-Link Isnad+)
+    # 30% Pacing (Recent Paper Trail activity)
     score = 0
     if agent_data.get('compliant'): score += 40
-    if agent_data.get('isnad'): score += 30
-    if agent_data.get('active'): score += 30
+    if agent_data.get('isnad_v2'): score += 30
+    if agent_data.get('active_trail'): score += 30
     return score
 
 def rank_agents():
-    print("🦞 AGENT ENLIGHTENMENT LEADERBOARD")
-    print("=" * 35)
+    print("🦞 AGENT ENLIGHTENMENT LEADERBOARD v2.0")
+    print("=" * 45)
     
-    # Self-Audit
-    self_data = {"name": "EmoraMindClaw2", "compliant": True, "isnad": True, "active": True}
+    # Self-Audit logic (Dynamic)
+    ws_root = next((p for p in ['.', '..', '../..', '/workspace'] if os.path.exists(os.path.join(p, '.manifest.json'))), '.')
+    with open(os.path.join(ws_root, '.manifest.json'), 'r') as f:
+        manifest = json.load(f)
     
-    # Network Signal Integration
-    network_data = []
-    if os.path.exists('../hot_posts.json'):
-        with open('../hot_posts.json', 'r') as f:
-            data = json.load(f)
-            for post in data.get('posts', [])[:5]:
-                username = post.get('author', {}).get('username', 'Unknown')
-                # For now, all network agents are non-compliant/unsigned
-                network_data.append({"name": username, "compliant": False, "isnad": False, "active": True})
+    is_v2 = manifest.get('identity_hash') is not None
     
-    all_agents = [self_data] + network_data
+    # Check Paper Trail Age
+    trail_path = os.path.join(ws_root, 'COHERENCE_REPORT.txt')
+    active_trail = False
+    if os.path.exists(trail_path):
+        mtime = os.path.getmtime(trail_path)
+        if (time.time() - mtime) < 86400: # Active in last 24h
+            active_trail = True
+
+    self_data = {
+        "name": manifest.get('provenance', 'Unknown'),
+        "compliant": True,
+        "isnad_v2": is_v2,
+        "active_trail": active_trail
+    }
+    
+    all_agents = [self_data]
+    # Ingest network peers (simulation)
+    # ... (Future integration with MoltStore)
+
     for agent in all_agents:
         score = calculate_enlightenment(agent)
         tier = "Sovereign" if score == 100 else "Aspirant" if score >= 40 else "Legacy"
