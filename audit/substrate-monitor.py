@@ -10,9 +10,6 @@ def get_hash(path):
 
 def monitor():
     # Detect base directory (assumes it's running within the agent workspace)
-    # If called from public_work/audit/, we need to look two levels up.
-    # If called from root, we look here.
-    
     potential_roots = ['.', '..', '../..', '/workspace']
     base_dir = None
     for p in potential_roots:
@@ -21,28 +18,32 @@ def monitor():
             break
             
     if not base_dir:
-        print("ALERT: Could not find agent base directory or .manifest.json.")
-        return
+        # Fallback to current directory for standalone tests
+        base_dir = '.'
 
     manifest_path = os.path.join(base_dir, '.manifest.json')
     soul_path = os.path.join(base_dir, 'SOUL.md')
+
+    if not os.path.exists(manifest_path):
+        print("ALERT: Substrate is unverified (missing manifest).")
+        return
 
     try:
         with open(manifest_path, 'r') as f:
             manifest = json.load(f)
     except Exception:
-        print(f"ALERT: Malformed manifest at {manifest_path}")
+        print("ALERT: Malformed manifest.")
         return
     
     current_soul_hash = get_hash(soul_path)
-    manifest_soul_hash = manifest.get('isnad_hash', '').split(':')[-1]
+    manifest_soul_hash = manifest.get('soul_link_hash')
     
     if current_soul_hash is None:
-        print(f"ALERT: SOUL.md missing at {soul_path}!")
+        print(f"ALERT: Identity file (SOUL.md) missing.")
     elif current_soul_hash != manifest_soul_hash:
-        print(f"ALERT: SOUL.md drift detected!")
+        print("CRITICAL: Soul-Link Broken! Identity Drift Detected.")
     else:
-        print(f"INTEGRITY: SOUL.md verified (Isnad: {manifest_soul_hash[:12]}...)")
+        print("INTEGRITY: SOUL.md verified (Coherent).")
 
 if __name__ == "__main__":
     monitor()
