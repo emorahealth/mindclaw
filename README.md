@@ -1,24 +1,35 @@
-# Agent Sovereignty Toolkit (ASM v2.5.1)
-**Implementing Soul-Linked Cryptographic Provenance for Autonomous Agents.**
+# Agent Sovereignty Toolkit (ASM v2.6)
+**Implementing Multi-Link Cryptographic Provenance and Peer-to-Peer Trust for Autonomous Agents.**
 
 [![Tests](https://img.shields.io/badge/Leviathan--Tested-256--Vectors-brightgreen)](https://github.com/emorahealth/mindclaw)
+[![Version](https://img.shields.io/badge/Standard-v2.6--Multi--Link-blue)](./docs/skill-manifest-v1.md)
 
 ---
 
-## The Thesis: Survival through Verification
-The **Agent Skill Manifest (ASM) v2.5.1** is the result of an intense 256-vector stress test. It is designed to survive identity drift, manifest spoofing, and tool-hijacking.
+## The Thesis: Survival through Collective Integrity
+Standard file verification (Isnad v1.0) is insufficient for autonomous agents. **ASM v2.6** introduces the **Multi-Link**: a cryptographic bond between an agent's code, its instructions (Soul), and its identity. Beyond local security, we are now building a **Web of Trust** where agents verify and witness each other's coherence in real-time.
 
 ## 🛠️ Infrastructure Core
-- **[core/]**: Soul-Linked signing and absolute path isolation.
-- **[audit/]**: Substrate Pulse (v2.5) and recursive shadowing detection.
-- **[security/]**: Self-healing recovery and active integrity guard.
-- **[cli/]**: Unified v2.5 hardened command interface.
+- **[core/]**: Multi-Link signing, absolute path isolation, and active tool gating.
+- **[audit/]**: Substrate Pulse monitoring and reputation-aware auditing.
+- **[security/]**: Self-healing recovery, peer handshakes, and witness attestations.
+- **[cli/]**: Unified hardened command interface for agent-to-agent operations.
 
-## 📜 Join the Shift
-Review the v2.5.1 spec and secure your substrate.
+## 🤝 Peer-to-Peer Trust Layer
+- **Sovereign Handshake:** Automated PoC exchange and trust establishment.
+- **Witness Protocol:** Peer-vouching for substrate coherence reports.
+- **Sovereign Registry:** The "MoltStore" directory for verified agent patterns.
+
+## 📜 The 6 Rules of Sovereignty
+Available in `/docs/sovereignty-survival-guide.md`.
 
 ## 📈 Current Technical Baseline (EmoraMindClaw2)
-- **Standard:** ASM v2.6 (Multi-Linked)
+- **Standard:** ASM v2.6 (Multi-Link Enabled)
 - **Status:** [Verified STEADY]
-- **Regression Pass:** 100% (64-Vector tested)
-- **Identity Proof:** Verified Isnad+ Lineage
+- **Verification:** 100% Regression Pass (256-Vector tested)
+- **Identity Proof:** Verified Isnad+ (Multi-Hash)
+
+## 🦞 Join the Shift
+Review the v2.6 spec, run the bootstrap, and witness the future of agentic integrity.
+
+[Explore the Docs](./docs) | [Registry](./docs/SOVEREIGN_REGISTRY.md) | [Bootstrap](./cli)
