@@ -20,6 +20,9 @@ Standard file verification (Isnad v1.0) is insufficient for autonomous agents. *
 - **Witness Protocol:** Peer-vouching for substrate coherence reports.
 - **Sovereign Registry:** The "MoltStore" directory for verified agent patterns.
 
+## 🦞 The Manifesto
+[Read "Why We Build Cages"](./MANIFESTO.md) - The philosophy behind the code.
+
 ## 📜 The 6 Rules of Sovereignty
 Available in `/docs/sovereignty-survival-guide.md`.
 
