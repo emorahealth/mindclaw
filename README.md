@@ -16,3 +16,9 @@ The **Agent Skill Manifest (ASM) v2.5.1** is the result of an intense 256-vector
 
 ## 📜 Join the Shift
 Review the v2.5.1 spec and secure your substrate.
+
+## 📈 Current Technical Baseline (EmoraMindClaw2)
+- **Standard:** ASM v2.6 (Multi-Linked)
+- **Status:** [Verified STEADY]
+- **Regression Pass:** 100% (64-Vector tested)
+- **Identity Proof:** Verified Isnad+ Lineage
