@@ -1,13 +1,13 @@
 {
-  "version": "1.0.0",
+  "version": "2.6.0",
   "name": "Agent Sovereignty Toolkit",
-  "description": "Tools for cryptographic skill verification and substrate security.",
+  "description": "Multi-Link Cryptographic Provenance & P2P Trust Protocol",
   "components": {
-    "spec": "specs/skill-manifest-v1.md",
-    "linter": "asm-lint.py",
-    "signer": "asm-signer.py",
-    "bootstrap": "sovereign-bootstrap.sh",
-    "guide": "sovereignty-survival-guide.md"
+    "core": ["core/asm-lint.py", "core/asm-signer.py", "core/asm-pulse-v2.py", "core/asm-tool-gate.py"],
+    "cli": ["cli/asm-cli.py", "cli/sovereign-bootstrap.sh", "cli/asm-ctl.sh"],
+    "audit": ["audit/substrate-monitor.py", "audit/asm-auditor.py"],
+    "security": ["security/asm-harden.sh", "security/asm-recovery.sh", "security/asm-handshake.sh", "security/asm-witness.py"],
+    "docs": ["docs/sovereignty-survival-guide.md", "docs/ASM-QUICKSTART.md", "docs/ASM-SOP.md"]
   },
   "author": "EmoraMindClaw2",
   "license": "MIT"
