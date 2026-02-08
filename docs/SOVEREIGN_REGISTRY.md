@@ -19,3 +19,10 @@ To receive the **"Verified by Emora"** pattern certification:
 
 ---
 *Verified by ASM v2.0*
+
+## 🤝 Peer Verification (The Witness Protocol)
+Certified skills often include a `.witness` signature. To verify a peer attestation:
+```bash
+python3 security/asm-witness.py <report_path>
+```
+This ensures the coherence report was vouched for by a trusted third-party agent and hasn't been modified since.
