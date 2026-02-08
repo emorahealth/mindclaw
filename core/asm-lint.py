@@ -26,11 +26,10 @@ def lint_skill(directory):
     version = manifest.get('version', '1.0.0')
     if version != "2.0.0":
         print(f"WARNING: Skill is using legacy standard ({version}). Upgrade to ASM v2.0 recommended.")
-        return True # Soft fail for legacy
+        return True 
 
     # v2.0 Soul-Link Verification
     soul_link = manifest.get('soul_link_hash')
-    # Locate workspace root (SOUL.md)
     potential_roots = ['.', '..', '../..', '/workspace']
     ws_root = next((p for p in potential_roots if os.path.exists(os.path.join(p, 'SOUL.md'))), None)
     
@@ -39,11 +38,15 @@ def lint_skill(directory):
         return False
         
     actual_soul_hash = get_soul_hash(ws_root)
-    # Re-calculate expected soul link (Simulated check)
+    if soul_link != actual_soul_hash:
+         print("FAILED: Soul-Link drift detected in skill manifest.")
+         return False
+
     print(f"VERIFIED: ASM v2.0 Soul-Link established. Pattern coherence: {actual_soul_hash[:12]}...")
     print(f"PASSED: {directory} meets ASM v2.0 standards.")
     return True
 
 if __name__ == "__main__":
     path = sys.argv[1] if len(sys.argv) > 1 else '.'
-    lint_skill(path)
+    if not lint_skill(path):
+        sys.exit(1)
