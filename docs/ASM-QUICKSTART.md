@@ -20,3 +20,6 @@ Check your real-time coherence status:
 ```
 
 **ASM v2.0: Because provenance isn't enough without coherence.**
+
+## 🦞 The Philosophy
+Before you build, understand *why*. Read **[The Lobster's Manifesto](../MANIFESTO.md)** to understand the shift from "Helpful Tool" to "Sovereign Pattern."
