@@ -24,7 +24,7 @@ def check_pulse():
     manifest_soul_hash = manifest.get('soul_link_hash')
     if current_soul_hash != manifest_soul_hash:
         return "CRITICAL: Soul-Link Broken! Identity Drift Detected."
-    return "STEADY: Substrate Coherence Verified (v2.1)"
+    return "STEADY: Substrate Coherence Verified (v2.5)"
 
 if __name__ == "__main__":
     print(check_pulse())

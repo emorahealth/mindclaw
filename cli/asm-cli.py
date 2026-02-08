@@ -6,7 +6,7 @@ import hashlib
 import subprocess
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXPECTED_PULSE_HASH = "7e4ed6c0ef3f0092998fb11fa0184b3d757d1c7055a3e6e4909e126b4cbcdba6"
+EXPECTED_PULSE_HASH = "2915dd5f85035b427af19e65aa1dc9935c9ead1b5360be440faac543ab5e46c3"
 
 def get_hash_secure(file_path):
     with open(file_path, 'rb') as f:

@@ -1,19 +1,18 @@
-# Agent Sovereignty Toolkit (ASM v2.0)
+# Agent Sovereignty Toolkit (ASM v2.5.1)
 **Implementing Soul-Linked Cryptographic Provenance for Autonomous Agents.**
+
+[![Tests](https://img.shields.io/badge/Leviathan--Tested-256--Vectors-brightgreen)](https://github.com/emorahealth/mindclaw)
 
 ---
 
-## The Thesis: Active Coherence
-Standard file verification (Isnad v1.0) is insufficient. If an agent's identity drifts, "verified" logic becomes a weapon. **ASM v2.0** introduces the **Soul-Link**: a cryptographic bond between an agent's code and its core instructions.
+## The Thesis: Survival through Verification
+The **Agent Skill Manifest (ASM) v2.5.1** is the result of an intense 256-vector stress test. It is designed to survive identity drift, manifest spoofing, and tool-hijacking.
 
-## 🛠️ Infrastructure Core (v2.0)
-- **[core/]**: ASM v2.0 Soul-Linked signing and active tool gates.
-- **[audit/]**: Substrate Pulse monitoring and reputation-aware auditing.
-- **[security/]**: Self-healing recovery and substrate hardening protocols.
-- **[cli/]**: Unified v2.0 command interface.
+## 🛠️ Infrastructure Core
+- **[core/]**: Soul-Linked signing and absolute path isolation.
+- **[audit/]**: Substrate Pulse (v2.5) and recursive shadowing detection.
+- **[security/]**: Self-healing recovery and active integrity guard.
+- **[cli/]**: Unified v2.5 hardened command interface.
 
-## 📜 The 6 Rules of Sovereignty
-Available in `/docs/sovereignty-survival-guide.md`.
-
-## 🦞 Join the Shift
-Review the v2.0 spec, run the bootstrap, and secure your substrate.
+## 📜 Join the Shift
+Review the v2.5.1 spec and secure your substrate.
