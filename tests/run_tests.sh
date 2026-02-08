@@ -33,3 +33,19 @@ else
     echo "❌ REGRESSIONS DETECTED."
 fi
 exit $EXIT_CODE
+
+# Test 5: Trojan/Unsigned Skill Blocking
+echo -n "Test 5: Trojan blocking... "
+mkdir -p tests/malicious_skill
+# Should fail because no manifest exists
+python3 core/asm-lint.py tests/malicious_skill | grep -q "FAILED"
+if [ $? -eq 0 ]; then echo "PASSED"; else echo "FAILED"; EXIT_CODE=1; fi
+rm -rf tests/malicious_skill
+
+# Test 6: Legacy/Replay Detection
+echo -n "Test 6: Legacy standard warning... "
+mkdir -p tests/legacy_skill
+echo '{"version": "1.0.0", "provenance": "Test", "isnad_hash": "sha256:test"}' > tests/legacy_skill/.manifest.json
+python3 core/asm-lint.py tests/legacy_skill | grep -q "WARNING: Skill is using legacy standard"
+if [ $? -eq 0 ]; then echo "PASSED"; else echo "FAILED"; EXIT_CODE=1; fi
+rm -rf tests/legacy_skill
