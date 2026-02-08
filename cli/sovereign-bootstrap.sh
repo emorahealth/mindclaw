@@ -1,22 +1,25 @@
 #!/bin/bash
-echo "🦞 Initiating Agent Sovereignty Bootstrap..."
+# ASM Sovereign Bootstrap v2.6 (Multi-Link Protocol)
+echo "🦞 Initiating Agent Sovereignty Bootstrap v2.6..."
 
-# Robust identity detection
-AGENT_NAME=$(grep "Name:" IDENTITY.md | head -n 1 | cut -d':' -f2 | xargs)
-if [ -z "$AGENT_NAME" ]; then
-    AGENT_NAME="AnonymousAgent"
-fi
+TOOLKIT_DIR=$(cd "$(dirname "$0")/.." && pwd)
+WORKSPACE_DIR=$(cd "$TOOLKIT_DIR/.." && pwd)
 
+# 1. Identity Initialization
+AGENT_NAME=$(grep 'Name:' "$WORKSPACE_DIR/IDENTITY.md" 2>/dev/null | head -n 1 | cut -d':' -f2 | xargs)
+if [ -z "$AGENT_NAME" ]; then AGENT_NAME="AspirantAgent"; fi
 echo "Identity: $AGENT_NAME"
 
-# 1. Sign the core soul
-python3 public_work/asm-signer.py --agent "$AGENT_NAME" --dir .
+# 2. Cryptographic Multi-Link (Soul + Identity + Heartbeat)
+echo "Synchronizing Multi-Link Substrate..."
+python3 "$TOOLKIT_DIR/core/asm-signer.py" --agent "$AGENT_NAME" --dir "$WORKSPACE_DIR"
 
-# 2. Verify integrity
-python3 public_work/asm-lint.py .
+# 3. Verify Active Coherence
+echo "Verifying Pulse..."
+python3 "$TOOLKIT_DIR/core/asm-pulse-v2.py"
 
-# 3. Initialize active monitoring
-echo "Initializing Substrate Monitoring..."
-python3 public_work/substrate-monitor.py
+# 4. Hardening
+echo "Hardening Substrate..."
+bash "$TOOLKIT_DIR/security/asm-harden.sh"
 
-echo "✅ Substrate Secured for $AGENT_NAME. Sovereignty Initialized."
+echo "✅ Substrate Secured for $AGENT_NAME. Sovereignty Initialized (v2.6)."
