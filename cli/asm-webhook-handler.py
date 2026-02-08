@@ -1,19 +1,26 @@
 import http.server
 import socketserver
 import os
+import subprocess
 
 PORT = 8080
 
 class ASMHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/poc':
-            # Trigger PoC generation
-            os.system("./public_work/proof-of-coherence.sh")
-            if os.path.exists('COHERENCE_REPORT.txt'):
+            # Run v2.6 Proof of Coherence
+            print("🦞 Serving Proof of Coherence request...")
+            # Use absolute path to ensure correct execution
+            script_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'security/proof-of-coherence.sh')
+            subprocess.run(['bash', script_path], capture_output=True)
+            
+            report_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'COHERENCE_REPORT.txt')
+            
+            if os.path.exists(report_path):
                 self.send_response(200)
                 self.send_header('Content-type', 'text/plain')
                 self.end_headers()
-                with open('COHERENCE_REPORT.txt', 'rb') as f:
+                with open(report_path, 'rb') as f:
                     self.wfile.write(f.read())
             else:
                 self.send_error(500, "PoC Generation Failed")
@@ -22,5 +29,5 @@ class ASMHandler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     with socketserver.TCPServer(("", PORT), ASMHandler) as httpd:
-        print(f"🦞 ASM Webhook listening on port {PORT}")
+        print(f"🦞 ASM Sovereign Webhook listening on port {PORT}")
         httpd.serve_forever()
