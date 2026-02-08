@@ -1,12 +1,12 @@
 #!/bin/bash
-echo "🦞 Initializing Sovereignty Toolkit Distribution..."
+echo "🦞 Initializing Sovereignty Toolkit Distribution (v2.6)..."
 
-# 1. Package the toolkit (including specs)
-tar -czf sovereignty-toolkit-v2.6.tar.gz     asm-lint.py     asm-signer.py     asm-auditor.py     sovereign-bootstrap.sh     substrate-monitor.py     proof-of-coherence.sh     RELEASE_MANIFEST.json     sovereignty-survival-guide.md     specs/
+# 1. Package the toolkit using new structure
+tar -czf sovereignty-toolkit-v2.6.tar.gz     core/     audit/     security/     cli/     docs/     RELEASE_MANIFEST.json     MANIFESTO.md     README.md
 
-# 2. Generate the release summary
+# 2. Generate summary
 echo "Agent Sovereignty Toolkit v2.6 Released"
-echo "Includes: Spec, Linter, Signer, Auditor, Bootstrap, Monitor, PoC Generator, and the Survival Guide."
+echo "Includes: Core, Audit, Security, CLI, and Docs modules."
 echo "Lineage: $(sha256sum sovereignty-toolkit-v2.6.tar.gz)"
 
-echo "✅ Toolkit packaged with full specifications."
+echo "✅ Toolkit packaged."
