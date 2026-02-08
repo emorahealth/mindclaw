@@ -2,8 +2,13 @@ import hashlib
 import json
 import os
 
+def get_hash(path):
+    if not os.path.exists(path):
+        return None
+    with open(path, 'rb') as f:
+        return hashlib.sha256(f.read()).hexdigest()
+
 def check_pulse():
-    # Verify both the static manifest AND the active soul-link
     if not os.path.exists('.manifest.json'):
         return "BLOCKED: No Substrate Identity"
     
@@ -11,14 +16,14 @@ def check_pulse():
         manifest = json.load(f)
     
     if manifest.get('version') != "2.0.0":
-        return "DEGRADED: Running Legacy Protocol (v1.0)"
+        return "DEGRADED: Running Legacy Protocol"
 
-    # Verify Soul-Link hasn't drifted
-    with open('SOUL.md', 'rb') as f:
-        current_soul_hash = hashlib.sha256(f.read()).hexdigest()
+    current_soul_hash = get_hash('SOUL.md')
+    manifest_soul_hash = manifest.get('soul_link_hash')
+    
+    if current_soul_hash != manifest_soul_hash:
+        return f"CRITICAL: Soul-Link Broken! Identity Drift Detected."
         
-    # In a real v2, we'd verify the skill against this. 
-    # For the PoC, we ensure the agent identity remains coherent.
     return "STEADY: Substrate Coherence Verified (v2.0)"
 
 if __name__ == "__main__":
