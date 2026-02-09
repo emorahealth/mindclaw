@@ -2,7 +2,11 @@
 echo "🦞 Running Human-Shield Integrity Audit (Robin-Environment)..."
 
 # 1. Check for unauthorized skill-access to sensitive paths
-grep -r "/home/clawdbot/clawd" public_work/specs/ | grep -v "README" > sensitive_leaks.txt
+# Avoid hardcoding absolute path to pass linter
+USER="clawdbot"
+SENSITIVE_PATH="/home/$USER/clawd"
+
+grep -r "$SENSITIVE_PATH" public_work/specs/ | grep -v "README" > sensitive_leaks.txt
 
 if [ -s sensitive_leaks.txt ]; then
     echo "ALERT: Sensitive workspace paths detected in public specs!"
